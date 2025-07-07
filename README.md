@@ -4,6 +4,29 @@
 
 ## 2nd Edition Entry: **Advanced News Intelligence Agent**
 
+# Advanced News Intelligence Agent for Nosana Builders Challenge
+
+**GitHub Repository:** https://github.com/Andy00L/agent-challenge
+
+**Docker Image:** drewdockerus/agent-challenge:latest
+
+**Video Demo:** https://youtu.be/m5PNtn2IAbA
+
+**Twitter:** https://x.com/Andy00L/status/1942311652231372809
+
+**Solana address:**
+4iS1x4mM3m8YgEDVgysBcmcNcYAnjDdtQPhEFt5sM83S
+
+**Host address:**
+EozKGYxT6UF3BR5oLnTSGCKrRbre5vEzb7xLhBwaankD
+
+**Deployer address:**
+CSG5S8yg4odJZ48v4koknZDDDCHWLsTneWLyhrjqZb7N
+
+**Nosana Deployment Proof:** https://2d6nj6438bdcoge85rnrf77b8bm9uyrxbzuekukjzrcr.node.k8s.prd.nos.ci/agents/newsAgent/chat
+
+=========================================================================================================
+
 This repository now contains a fully‑featured **News Intelligence Agent** that can:
 
 1. **Fetch and structure breaking news** from multiple sources
@@ -31,12 +54,12 @@ pnpm run dev  # → http://localhost:8080
 
 ### Required environment variables
 
-| Key                         | Used by                                                  | Purpose                                                       |
-| --------------------------- | -------------------------------------------------------- | ------------------------------------------------------------- |
-| `API_BASE_URL`              | all Mastra agents                                        | Base URL of the LLM endpoint (Ollama or Nosana)               |
-| `MODEL_NAME_AT_ENDPOINT`    | all Mastra agents                                        | Model ID served at the endpoint                               |
-| `PERPLEXITY_API_KEY`        | **news**, **sentiment**, **fact‑check**, **trend** tools | Authenticates calls to the Perplexity AI Chat/Completions API |
-| `NEWS_API_KEY` *(optional)* | (future) alternative news source API                     | Reserved – not presently required but left for expansion      |
+| Key                         | Used by                                                  | Purpose                                                                                       |
+| --------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `API_BASE_URL`              | all Mastra agents                                        | Base URL of the LLM endpoint (Ollama or Nosana)                                               |
+| `MODEL_NAME_AT_ENDPOINT`    | all Mastra agents                                        | Model ID served at the endpoint                                                               |
+| `PERPLEXITY_API_KEY`        | **news**, **sentiment**, **fact‑check**, **trend** tools | Authenticates calls to the Perplexity AI Chat/Completions API                                 |
+| `NEWS_API_KEY` *(optional)* | (future) alternative news source API                     | Reserved – not presently required but left for expansion, get yours here:https://newsapi.org/ |
 
 A ready‑to‑edit `.env.example` is included.
 
