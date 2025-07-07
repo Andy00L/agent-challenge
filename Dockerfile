@@ -1,9 +1,12 @@
 FROM ollama/ollama:0.7.0
 
 # Qwen2.5:1.5b - Docker
-ENV API_BASE_URL=http://127.0.0.1:11434/api
+ENV API_BASE_URL=https://4qvrhtl5tvy69ca2veau9dxhpt43lbpofdjbu6r21wvv.node.k8s.prd.nos.ci/api
+
 ENV MODEL_NAME_AT_ENDPOINT=qwen2.5:1.5b
 
+ENV PERPLEXITY_API_KEY=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
+ENV NEWS_API_KEY=83f4281327a74bb8b6fd974c91f90791
 # Qwen2.5:32b = Docker
 # ENV API_BASE_URL=http://127.0.0.1:11434/api
 # ENV MODEL_NAME_AT_ENDPOINT=qwen2.5:32b
