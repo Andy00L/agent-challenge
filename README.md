@@ -10,6 +10,8 @@
 
 **Docker Image:** drewdockerus/agent-challenge:latest
 
+**Discord:** https://discord.com/discord.com/users/1375670627490336928
+
 **Video Demo:** https://youtu.be/m5PNtn2IAbA
 
 **Twitter:** https://x.com/Andy00L/status/1942311652231372809
