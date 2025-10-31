@@ -9,12 +9,12 @@
 ## 🏆 Challenge Submission Details
 
 **Project Name**: nosDraw - AI Diagram Generator  
-**Repository**: [https://github.com/your-username/agent-challenge](https://github.com/your-username/agent-challenge)  
+**Repository**: [https://github.com/Andy00L/agent-challenge](https://github.com/Andy00L/agent-challenge)  
 **Docker Image**: `drewdockerus/agent-challenge:latest`  
 **Video Demo**: [Link to your demo video]  
 **Twitter**: [Your Twitter/X link]  
-**Solana Address**: [Your Solana wallet address]  
-**Nosana Deployment Proof**: [Your Nosana deployment URL]
+**Solana Address**: ALCu5d52bEaUUKAoXw7Va5RFbvL6hGri81bmdAirb55z  
+**Nosana Deployment Proof**: https://352pafnckysnsauax8amasj8koszy923nd866fn5y2gu.node.k8s.prd.nos.ci/
 
 ---
 
@@ -177,11 +177,11 @@ Create a `.env` file in the project root:
 ```env
 # Remote Ollama Endpoint (Recommended - Nosana hosted)
 OLLAMA_API_URL=https://your-nosana-endpoint/api
-MODEL_NAME_AT_ENDPOINT=llama3.1
+MODEL_NAME_AT_ENDPOINT=qwen3:8b
 
 # Alternative: Local Ollama Instance
 # OLLAMA_API_URL=http://127.0.0.1:11434/api
-# MODEL_NAME_AT_ENDPOINT=llama3.1
+# MODEL_NAME_AT_ENDPOINT=qwen3:8b
 
 # Next.js Configuration
 NEXT_TELEMETRY_DISABLED=1
@@ -198,7 +198,7 @@ NEXT_TELEMETRY_DISABLED=1
 **Option 2: Local Ollama**
 
 1. Install Ollama: `curl -fsSL https://ollama.com/install.sh | sh`
-2. Pull the model: `ollama pull llama3.1`
+2. Pull the model: `ollama pull qwen3:0.6b`
 3. Start the service: `ollama serve`
 4. Update `.env` to `http://127.0.0.1:11434/api`
 
@@ -223,9 +223,9 @@ bun run dev
 ### **Available Scripts**
 
 ```bash
-bun run dev          # Start development server
-bun run build        # Production build
-bun run start        # Start production server
+bun run dev:ui          # Start development server
+bun run build        # Production build ui and agent
+bun run start        # Start production server ui and agent
 bun run lint         # Run ESLint
 ```
 

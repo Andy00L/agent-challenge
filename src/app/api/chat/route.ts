@@ -269,3 +269,32 @@ export async function GET() {
     );
   }
 }
+
+function strictXMLFix(xml: string): string {
+  // FIX 1: Remove quotes around hex colors in style attributes
+  xml = xml.replace(/fillColor="(#[0-9a-fA-F]{6})"/g, "fillColor=$1");
+  xml = xml.replace(/strokeColor="(#[0-9a-fA-F]{6})"/g, "strokeColor=$1");
+
+  // FIX 2: Remove spaces and quotes in style attributes
+  xml = xml.replace(/style="([^"]*)"/g, (match, styleContent) => {
+    const fixed = styleContent
+      .replace(/\s*=\s*/g, "=")
+      .replace(/\s*;\s*/g, ";")
+      .replace(/"([^"]*)"/g, "$1"); // Remove any quotes inside style
+    return `style="${fixed}"`;
+  });
+
+  // FIX 3: Fix broken edges - ensure they have proper structure
+  xml = xml.replace(
+    /<mxCell\s+id="(\d+)"\s+parent="([^"]+)"\s+value=""\s+style="[^"]*"\s+edge="1"\s+parent="[^"]+"\s*\/>/g,
+    (match, id, parentId) => {
+      // Reconstruct as proper edge with source/target
+      // This is a fallback - ideally agent shouldn't generate these
+      return `<mxCell id="${id}" value="" style="endArrow=classic;html=1" edge="1" parent="1">
+  <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+</mxCell>`;
+    }
+  );
+
+  return xml;
+}

@@ -194,7 +194,23 @@ TRIGGER WORDS = INSTANT CREATION:
 - Any business term: "org chart", "timeline", "network"
 
 Your response = tool call only. No text.
-Create now. Always create. Never explain.`,
+Create now. Always create. Never explain.
+CRITICAL EDGE RULES:
+- NEVER generate edges with parent="3" or parent="4" - ALWAYS parent="1"
+- EVERY edge MUST have: source="X" target="Y"
+- EVERY edge MUST have mxGeometry
+- NEVER put quotes around hex colors: #fff not "#fff"
+
+BROKEN EDGE (DON'T DO):
+<mxCell id="10" parent="3" value="" style="strokeColor=\"#008000\";" edge="1" parent="3"/>
+
+CORRECT EDGE (DO THIS):
+<mxCell id="10" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="2" target="3">
+  <mxGeometry width="50" height="50" relative="1" as="geometry">
+    <mxPoint x="425" y="160" as="sourcePoint"/>
+    <mxPoint x="425" y="200" as="targetPoint"/>
+  </mxGeometry>
+</mxCell>`,
 
   description:
     "An expert diagram designer that creates professional flowcharts, technical diagrams, and visual representations using draw.io XML format.",

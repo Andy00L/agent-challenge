@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 import {
   Card,
@@ -179,12 +179,13 @@ export default function ChatPanel() {
     }
   };
 
-  // Handle input change
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setInput(e.target.value);
-  };
+  // Handle input change - memoized to prevent focus loss
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setInput(e.target.value);
+    },
+    []
+  );
 
   return (
     <Card className="h-full flex flex-col rounded-none py-0 gap-0">
