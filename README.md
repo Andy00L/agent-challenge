@@ -12,7 +12,7 @@
 **Repository**: [https://github.com/Andy00L/agent-challenge](https://github.com/Andy00L/agent-challenge)  
 **Docker Image**: `drewdockerus/agent-challenge:latest`  
 **Video Demo**: https://youtu.be/z4crjc7I4O4  
-**Twitter**: https://x.com/Andy00L/status/1984189860685783103  
+**Twitter**: https://x.com/Andy00L/status/1984192074816815284  
 **Deployer address**: 2WFKwAqjGohFyn6K7e7w7FtEy5GePXMVaQ629if8FaBy  
 **Host address**: CoDCSGhEViBhw3vSKhha2VbrtwAJ17MjpieiZLh76Vad  
 **Solana Address**: ALCu5d52bEaUUKAoXw7Va5RFbvL6hGri81bmdAirb55z  
