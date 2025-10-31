@@ -2,6 +2,8 @@
 
 **Nosana Builders Challenge #3: AI Agents 102**
 
+![Chess AI Tournament](./assets/NosanaBuildersChallenge03.jpg)
+
 ![nosDraw Diagram Generator](./assets/template.png)
 
 ## 🏆 Challenge Submission Details
