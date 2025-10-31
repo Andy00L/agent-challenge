@@ -1,52 +1,71 @@
 # syntax=docker/dockerfile:1
 
-FROM node:lts AS build
-
-RUN corepack enable
-
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-
-# Disable Analytics/Telemetry
-ENV DISABLE_TELEMETRY=true
-ENV POSTHOG_DISABLED=true
-ENV MASTRA_TELEMETRY_DISABLED=true
-ENV DO_NOT_TRACK=1
-
-# Ensure logs are visible (disable buffering)
-ENV PYTHONUNBUFFERED=1
+##################################
+# 1. Build stage (compilation)  #
+##################################
+FROM oven/bun:1 AS build
 
 WORKDIR /app
 
-COPY pnpm-lock.yaml ./
+# Disable telemetry and ensure logs are visible
+ENV DISABLE_TELEMETRY=true \
+    POSTHOG_DISABLED=true \
+    MASTRA_TELEMETRY_DISABLED=true \
+    DO_NOT_TRACK=1 \
+    NEXT_TELEMETRY_DISABLED=1 \
+    PYTHONUNBUFFERED=1 \
+    NODE_ENV=production
 
-RUN --mount=type=cache,target=/pnpm/store \
-  pnpm fetch --frozen-lockfile
+# Copy package files (maximize cache layer)
+COPY package.json bun.lockb* ./
 
-COPY package.json ./
+# Install dependencies with frozen lockfile
+RUN bun install --frozen-lockfile
 
-RUN --mount=type=cache,target=/pnpm/store \
-  pnpm install --frozen-lockfile --prod --offline
+# Copy environment variables
+COPY .env* ./
 
+# Copy entire application
 COPY . .
 
-RUN pnpm build
+# Build the application
+RUN bun run build
 
-FROM node:lts AS runtime
-
-RUN groupadd -g 1001 appgroup && \
-  useradd -u 1001 -g appgroup -m -d /app -s /bin/false appuser
+##################################
+# 2. Runtime stage (execution)  #
+##################################
+FROM oven/bun:1 AS runtime
 
 WORKDIR /app
 
-COPY --from=build --chown=appuser:appgroup /app ./
+# Create non-root user for security
+RUN groupadd -g 1001 appgroup && \
+    useradd -u 1001 -g appgroup -m -d /app -s /bin/false appuser
 
+# Pre-create necessary directories with correct permissions
+RUN mkdir -p /app/.config /app/.next && \
+    chown -R appuser:appgroup /app/.config /app/.next
+
+# Copy built application from build stage
+COPY --from=build --chown=appuser:appgroup /app .
+
+# Set production environment
 ENV NODE_ENV=production \
-  NODE_OPTIONS="--enable-source-maps"
+    DISABLE_TELEMETRY=true \
+    POSTHOG_DISABLED=true \
+    MASTRA_TELEMETRY_DISABLED=true \
+    DO_NOT_TRACK=1 \
+    NEXT_TELEMETRY_DISABLED=1
 
+# Switch to non-root user
 USER appuser
 
-EXPOSE 3000
-EXPOSE 4111
+# Expose ports
+EXPOSE 3000  4111
 
-ENTRYPOINT ["npm", "start"]
+# Health check (optional but recommended)
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD bun run health || exit 1
+
+# Start application
+ENTRYPOINT ["bun", "run", "start"]

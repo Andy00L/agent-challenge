@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { CopilotKit } from "@copilotkit/react-core";
+import { Analytics } from "@vercel/analytics/react";
+
 import "./globals.css";
-import "@copilotkit/react-ui/styles.css";
+import { DiagramProvider } from "./contexts/diagram-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nosana Mastra Agent Kit",
-  description: "An example of using CopilotKit with Mastra agents.",
+  title: "Next-AI-DrawionosDraw",
+  description: "An AI-powered drawing tool that integrates with draw.io",
 };
 
 export default function RootLayout({
@@ -26,10 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <CopilotKit runtimeUrl="/api/copilotkit" agent="weatherAgent">
-          {children}
-        </CopilotKit>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <DiagramProvider>{children}</DiagramProvider>
+
+        <Analytics />
       </body>
     </html>
   );

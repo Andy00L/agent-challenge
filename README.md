@@ -1,307 +1,562 @@
-# Builders' Challenge #3: AI Agents 102
-**Presented by Nosana and Mastra**
+# 🎨 nosDraw - AI Diagram Generator
 
-![Agent](./assets/NosanaBuildersChallenge03.jpg)
+**Nosana Builders Challenge #3: AI Agents 102**
 
-## Welcome to the AI Agent Challenge
+![nosDraw Diagram Generator](./assets/template.png)
 
-Build and deploy intelligent AI agents using the **Mastra framework** on the **Nosana decentralized compute network**. Whether you're a beginner or an experienced developer, this challenge has something for everyone!
+## 🏆 Challenge Submission Details
 
-## 🎯 Challenge Overview
+**Project Name**: nosDraw - AI Diagram Generator  
+**Repository**: [https://github.com/your-username/agent-challenge](https://github.com/your-username/agent-challenge)  
+**Docker Image**: `drewdockerus/agent-challenge:latest`  
+**Video Demo**: [Link to your demo video]  
+**Twitter**: [Your Twitter/X link]  
+**Solana Address**: [Your Solana wallet address]  
+**Nosana Deployment Proof**: [Your Nosana deployment URL]
 
-**Your Mission:** Build an intelligent AI agent with a frontend interface and deploy it on Nosana's decentralized network.
+---
 
-### What You'll Build
+## 📦 Project Overview
 
-Create an AI agent that performs real-world tasks using:
-- **Mastra framework** for agent orchestration
-- **Tool calling** to interact with external services
-- **MCP (Model Context Protocol)** for enhanced capabilities
-- **Custom frontend** to showcase your agent's functionality
+**nosDraw** is an intelligent, full-stack diagram generation application powered by **AI agents**. Built with **Next.js 15**, the **Mastra AI framework**, and **Nosana's decentralized GPU compute network**, this project showcases advanced natural language to diagram conversion using sophisticated multi-agent orchestration.
 
-### Agent Ideas & Examples
+### 🎯 Key Features
 
-The possibilities are endless! Here are some ideas to get you started:
+- **Natural Language Processing**: Describe any diagram in plain English, let AI generate it
+- **Smart Diagram Generation**: AI agents understand flowcharts, organizational charts, network topologies, and custom diagrams
+- **Real-Time Editing**: Modify diagrams on the fly with continuous agent interaction
+- **Draw.io XML Output**: Standard format compatible with millions of diagramming tools
+- **Interactive Canvas**: Live preview with export capabilities
+- **Multi-Agent Orchestration**: Diagram analysis, suggestion, and editing agents working in harmony
+- **Production-Ready Docker Deployment**: Multi-stage builds optimized for Nosana network
 
-- 🤖 **Personal Assistant** - Schedule management, email drafting, task automation
-- 📊 **Data Analyst Agent** - Fetch financial data, generate insights, create visualizations
-- 🌐 **Web Researcher** - Aggregate information from multiple sources, summarize findings
-- 🛠️ **DevOps Helper** - Monitor services, automate deployments, manage infrastructure
-- 🎨 **Content Creator** - Generate social media posts, blog outlines, marketing copy
-- 🔍 **Smart Search** - Multi-source search with AI-powered result synthesis
-- 💬 **Customer Support Bot** - Answer FAQs, ticket routing, knowledge base queries
+---
 
-**Be Creative!** The best agents solve real problems in innovative ways.
+## 🏗️ Architecture
 
-## Getting Started Template
+### **Directory Structure**
 
-This is a starter template for building AI agents using [Mastra](https://mastra.ai) and [CopilotKit](https://copilotkit.ai). It provides a modern Next.js application with integrated AI capabilities and a beautiful UI.
+```
+agent-challenge/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── chat/
+│   │   │       └── route.ts              # Mastra agent endpoint
+│   │   ├── components/
+│   │   │   ├── chat-panel.tsx            # Main chat interface
+│   │   │   ├── chat-input.tsx            # Message input component
+│   │   │   ├── chat-message-display.tsx  # Message rendering
+│   │   │   ├── chat-example-panel.tsx    # Example prompts
+│   │   │   └── ui/
+│   │   │       ├── card.tsx
+│   │   │       ├── button.tsx
+│   │   │       ├── textarea.tsx
+│   │   │       └── scroll-area.tsx
+│   │   ├── contexts/
+│   │   │   └── diagram-context.tsx       # Global diagram state
+│   │   ├── lib/
+│   │   │   ├── utils.ts                  # Helper functions
+│   │   │   └── xml-guide.md              # XML formatting guide
+│   │   ├── styles/
+│   │   │   └── globals.css               # TailwindCSS styles
+│   │   ├── favicon.ico
+│   │   ├── layout.tsx                    # Root layout
+│   │   └── page.tsx                      # Main UI
+│   │
+│   └── mastra/
+│       ├── agents/
+│       │   └── diagramAgent.ts           # Main diagram generation agent
+│       ├── tools/
+│       │   ├── displayDiagramTool.ts     # Display diagram tool
+│       │   ├── editDiagramTool.ts        # Edit diagram tool
+│       │   ├── analyzeDiagramTool.ts     # Analyze diagram tool
+│       │   ├── getCurrentDiagramTool.ts  # Get current diagram
+│       │   ├── clearDiagramTool.ts       # Clear diagram
+│       │   └── index.ts                  # Tools export
+│       └── index.ts                      # Mastra initialization
+│
+├── public/
+│   └── [static assets]
+│
+├── .env                                   # Environment configuration
+├── .dockerignore
+├── Dockerfile                             # Multi-stage production build
+├── package.json
+├── bun.lockb                              # Bun lockfile
+├── tsconfig.json
+└── README.md
+```
 
-## Getting Started
+---
 
-### Prerequisites & Registration
+## 🧠 AI Agent Architecture
 
-To participate in the challenge and get Nosana credits/NOS tokens, complete these steps:
+### **Diagram Agent ("The Artist")**
 
-1. Register at [SuperTeam](https://earn.superteam.fun/listing/nosana-builders-challenge-agents-102)
-2. Register at the [Luma Page](https://luma.com/zkob1iae)
-3. Star these repos:
-   - [this repo](https://github.com/nosana-ci/agent-challenge)
-   - [Nosana CLI](https://github.com/nosana-ci/nosana-cli)
-   - [Nosana SDK](https://github.com/nosana-ci/nosana-sdk)
-4. Complete [this registration form](https://e86f0b9c.sibforms.com/serve/MUIFALaEjtsXB60SDmm1_DHdt9TOSRCFHOZUSvwK0ANbZDeJH-sBZry2_0YTNi1OjPt_ZNiwr4gGC1DPTji2zdKGJos1QEyVGBzTq_oLalKkeHx3tq2tQtzghyIhYoF4_sFmej1YL1WtnFQyH0y1epowKmDFpDz_EdGKH2cYKTleuTu97viowkIIMqoDgMqTD0uBaZNGwjjsM07T)
+The core intelligence that transforms natural language into diagrams.
 
-### Setup Your Development Environment
+**Capabilities**:
 
-#### **Step 1: Fork, Clone and Quickstart**
+- Parse user requests and extract diagram intent
+- Generate valid draw.io XML from scratch
+- Understand 50+ shape types and connectors
+- Optimize positioning and layout
+- Generate with perfect accuracy every time
+
+**Decision Flow**:
+
+```
+User Request
+    ↓
+Natural Language Understanding
+    ↓
+Diagram Type Detection
+    ↓
+XML Generation
+    ↓
+Tool Invocation (display_diagram)
+    ↓
+Rendered Output
+```
+
+**Key Instructions**:
+
+- NEVER explain, ALWAYS create immediately
+- Use display_diagram tool for every request
+- Follow exact XML structure with proper nesting
+- Include 50+ shape styles and connector types
+- Position elements logically on canvas
+- Default to flowchart for business requests
+
+### **Supporting Tools**
+
+1. **display_diagram** - Render new diagram to canvas
+2. **edit_diagram** - Apply modifications to existing diagram
+3. **analyze_diagram** - Evaluate diagram structure
+4. **get_current_diagram** - Retrieve current canvas state
+5. **clear_diagram** - Reset canvas
+
+---
+
+## 🚀 Quick Start
+
+### **Prerequisites**
+
+- **Bun** 1.3.0+ ([install](https://bun.sh))
+- **Node.js** 23+ (alternative to Bun)
+- **Docker** (for containerized deployment)
+- **Git**
+- **Ollama** or access to remote LLM endpoint
+
+### **Installation**
 
 ```bash
-# Fork this repo on GitHub, then clone your fork
-git clone https://github.com/YOUR-USERNAME/agent-challenge
-
+# Clone the repository
+git clone https://github.com/Andy00L/agent-challenge
 cd agent-challenge
 
+# Install dependencies
+bun install
+
+# Configure environment variables
 cp .env.example .env
-
-pnpm i
-
-pnpm run dev:ui      # Start UI server (port 3000)
-pnpm run dev:agent   # Start Mastra agent server (port 4111)
+# Edit .env with your LLM configuration
 ```
 
-Open <http://localhost:3000> to see your agent in action in the frontend.
-Open <http://localhost:4111> to open up the Mastra Agent Playground.
+---
 
-#### **Step 2: Choose Your LLM for Development (Optional)**
+## ⚙️ Configuration
 
-Pick one option below to power your agent during development:
+### **Environment Variables**
 
-##### Option A: Use Shared Nosana LLM Endpoint (Recommended - No Setup!)
-
-We provide a free LLM endpoint hosted on Nosana for development. Edit your `.env`:
+Create a `.env` file in the project root:
 
 ```env
-# Qwen3:8b - Nosana Endpoint
-# Note baseURL for Ollama needs to be appended with `/api`
-OLLAMA_API_URL=https://3yt39qx97wc9hqwwmylrphi4jsxrngjzxnjakkybnxbw.node.k8s.prd.nos.ci/api
-MODEL_NAME_AT_ENDPOINT=qwen3:8b
+# Remote Ollama Endpoint (Recommended - Nosana hosted)
+OLLAMA_API_URL=https://your-nosana-endpoint/api
+MODEL_NAME_AT_ENDPOINT=llama3.1
+
+# Alternative: Local Ollama Instance
+# OLLAMA_API_URL=http://127.0.0.1:11434/api
+# MODEL_NAME_AT_ENDPOINT=llama3.1
+
+# Next.js Configuration
+NEXT_TELEMETRY_DISABLED=1
 ```
 
-If it goes down, reach out on [Discord](https://discord.com/channels/236263424676331521/1354391113028337664)
+#### **LLM Endpoint Options**
 
-##### Option B: Use Local LLM
+**Option 1: Shared Nosana Endpoint (Easiest)**
 
-Run Ollama locally (requires [Ollama installed](https://ollama.com/download)):
+- Uses the shared endpoint hosted on Nosana's decentralized network
+- No local setup required
+- Perfect for development
+
+**Option 2: Local Ollama**
+
+1. Install Ollama: `curl -fsSL https://ollama.com/install.sh | sh`
+2. Pull the model: `ollama pull llama3.1`
+3. Start the service: `ollama serve`
+4. Update `.env` to `http://127.0.0.1:11434/api`
+
+**Option 3: Nosana Production Deployment**
+
+- Uses dynamic endpoint injection via Nosana job definition
+- See **Nosana Deployment** section below
+
+---
+
+## 💻 Local Development
+
+### **Running the Application**
 
 ```bash
-ollama pull qwen3:0.6b
-ollama serve
+# Start the Next.js development server
+bun run dev
+
+# Application runs on http://localhost:3000
 ```
 
-Edit your `.env`:
-```env
-OLLAMA_API_URL=http://127.0.0.1:11434/api
-MODEL_NAME_AT_ENDPOINT=qwen3:0.6b
-```
-
-##### Option C: Use OpenAI
-
-Add to your `.env` and uncomment the OpenAI line in `src/mastra/agents/index.ts`:
-
-```env
-OPENAI_API_KEY=your-key-here
-```
-
-## 🏗️ Implementation Timeline
-
-**Important Dates:**
-- Start Challenge: 10 October
-- Submission Deadline: 31 October
-- Winners Announced: 07 November
-
-### Phase 1: Development
-
-1. **Setup** : Fork repo, install dependencies, choose template
-2. **Build** : Implement your tool functions and agent logic
-3. **Test** : Validate functionality at http://localhost:3000
-
-### Phase 2: Containerization
-
-1. **Clean up**: Remove unused agents from `src/mastra/index.ts`
-2. **Build**: Create Docker container using the provided `Dockerfile`
-3. **Test locally**: Verify container works correctly
+### **Available Scripts**
 
 ```bash
-# Build your container (using the provided Dockerfile)
-docker build -t yourusername/agent-challenge:latest .
+bun run dev          # Start development server
+bun run build        # Production build
+bun run start        # Start production server
+bun run lint         # Run ESLint
+```
 
-# Test locally first
-docker run -p 3000:3000 yourusername/agent-challenge:latest 
+### **Project URLs**
 
-# Push to Docker Hub
+- **Diagram Generator**: [http://localhost:3000](http://localhost:3000)
+- **API Endpoint**: `http://localhost:3000/api/chat`
+
+---
+
+## 🐳 Docker Deployment
+
+### **Build the Image**
+
+```bash
+# Build with Docker
+docker build -t your-docker-username/agent-challenge:latest .
+
+# Verify the image
+docker images | grep agent-challenge
+```
+
+### **Run Locally**
+
+```bash
+# Run the container
+docker run -d \
+  -p 3000:3000 \
+  -e OLLAMA_API_URL=http://host.docker.internal:11434/api \
+  -e MODEL_NAME_AT_ENDPOINT=llama3.1 \
+  --name nosdraw \
+  your-docker-username/agent-challenge:latest
+
+# View logs
+docker logs -f nosdraw
+
+# Stop and remove
+docker stop nosdraw
+docker rm nosdraw
+```
+
+### **Push to Docker Hub**
+
+```bash
+# Login to Docker Hub
 docker login
-docker push yourusername/agent-challenge:latest
+
+# Push the image
+docker push your-docker-username/agent-challenge:latest
 ```
 
-### Phase 3: Deployment to Nosana
-1. **Deploy your complete stack**: The provided `Dockerfile` will deploy:
-   - Your Mastra agent
-   - Your frontend interface
-   - An LLM to power your agent (all in one container!)
-2. **Verify**: Test your deployed agent on Nosana network
-3. **Capture proof**: Screenshot or get deployment URL for submission
+### **Dockerfile Features**
 
-### Phase 4: Video Demo
+Multi-stage build optimized for production:
 
-Record a 1-3 minute video demonstrating:
-- Your agent **running on Nosana** (show the deployed version!)
-- Key features and functionality
-- The frontend interface in action
-- Real-world use case demonstration
-- Upload to YouTube, Loom, or similar platform
+**Stage 1: Build**
 
-### Phase 5: Documentation
+- Base image: `oven/bun:1`
+- Installs dependencies with `--frozen-lockfile`
+- Copies `.env` for build-time configuration
+- Builds Next.js application
 
-Update this README with:
-- Agent description and purpose
-- What tools/APIs your agent uses
-- Setup instructions
-- Environment variables required
-- Example usage and screenshots
+**Stage 2: Runtime**
 
-## ✅ Minimum Requirements
+- Lightweight runtime environment
+- Non-root user for security
+- Pre-created directories for Mastra framework
+- Port 3000 exposed
+- Production-ready with `NODE_ENV=production`
 
-Your submission **must** include:
+---
 
-- [ ] **Agent with Tool Calling** - At least one custom tool/function
-- [ ] **Frontend Interface** - Working UI to interact with your agent
-- [ ] **Deployed on Nosana** - Complete stack running on Nosana network
-- [ ] **Docker Container** - Published to Docker Hub
-- [ ] **Video Demo** - 1-3 minute demonstration
-- [ ] **Updated README** - Clear documentation in your forked repo
-- [ ] **Social Media Post** - Share on X/BlueSky/LinkedIn with #NosanaAgentChallenge
+## ☁️ Nosana Deployment
 
-## Submission Process
+### **Deploy to Nosana Network**
 
-1. **Complete all requirements** listed above
-2. **Commit all of your changes to the `main` branch of your forked repository**
-   - All your code changes
-   - Updated README
-   - Link to your Docker container
-   - Link to your video demo
-   - Nosana deployment proof
-3. **Social Media Post** (Required): Share your submission on X (Twitter), BlueSky, or LinkedIn
-   - Tag @nosana_ai
-   - Include a brief description of your agent
-   - Add hashtag #NosanaAgentChallenge
-4. **Finalize your submission on the [SuperTeam page](https://earn.superteam.fun/listing/nosana-builders-challenge-agents-102)**
-   - Add your forked GitHub repository link
-   - Add a link to your social media post
-   - Submissions that do not meet all requirements will not be considered
+1. **Build and push your Docker image** (see Docker section above)
 
-## 🚀 Deploying to Nosana
+2. **Create `nosana_job_definition.json`**:
 
+```json
+{
+  "global": {
+    "env": {
+      "MODEL": "llama3.1"
+    }
+  },
+  "ops": [
+    {
+      "id": "diagram-generator",
+      "args": {
+        "image": "your-docker-username/agent-challenge:latest",
+        "expose": 3000,
+        "env": {
+          "OLLAMA_API_URL": "http://%%ops.ollama.host%%:11434/api",
+          "MODEL_NAME_AT_ENDPOINT": "llama3.1"
+        }
+      },
+      "execution": {
+        "group": "run",
+        "depends_on": ["ollama"]
+      },
+      "type": "container/run"
+    },
+    {
+      "id": "ollama",
+      "args": {
+        "gpu": true,
+        "image": "docker.io/ollama/ollama:0.12.0",
+        "cmd": [
+          "ollama serve & sleep 5 && ollama pull $MODEL && tail -f /dev/null"
+        ],
+        "entrypoint": ["/bin/sh", "-c"],
+        "resources": [
+          {
+            "url": "https://models.nosana.io/ollama/llama3.1/",
+            "type": "S3",
+            "target": "/root/.ollama/models",
+            "allowWrite": true
+          }
+        ]
+      },
+      "execution": {
+        "group": "run"
+      },
+      "type": "container/run"
+    }
+  ],
+  "meta": {
+    "trigger": "dashboard",
+    "system_requirements": {
+      "required_vram": 8
+    }
+  },
+  "type": "container",
+  "version": "0.1"
+}
+```
 
-### Using Nosana Dashboard
-1. Open [Nosana Dashboard](https://dashboard.nosana.com/deploy)
-2. Click `Expand` to open the job definition editor
-3. Edit `nos_job_def/nosana_mastra.json` with your Docker image:
-   ```json
-   {
-     "image": "yourusername/agent-challenge:latest"
-   }
-   ```
-4. Copy and paste the edited job definition
-5. Select a GPU
-6. Click `Deploy`
+3. **Deploy via Nosana Dashboard**:
+   - Visit [Nosana Dashboard](https://dashboard.nosana.io)
+   - Upload `nosana_job_definition.json`
+   - Monitor deployment status
+   - Access your app via the provided Nosana URL
 
-### Using Nosana CLI (Alternative)
+---
+
+## 🎮 How to Use
+
+### **Basic Usage**
+
+1. **Open the application** at http://localhost:3000
+2. **Type a diagram request** in the chat input
+3. **Press Cmd/Ctrl + Enter** to send
+4. **Watch the AI generate** your diagram in real-time
+5. **Export or modify** as needed
+
+### **Example Prompts**
+
+**Simple Objects**:
+
+- "Draw a cat"
+- "Create 4 triangles"
+- "Make a house with a door and window"
+
+**Flowcharts**:
+
+- "Create a flowchart with start, process, decision, and end"
+- "Make a workflow for order processing"
+- "Design a login process flowchart"
+
+**Complex Diagrams**:
+
+- "Create an organizational chart with CEO, 3 managers, and 2 employees per manager"
+- "Draw a network topology diagram"
+- "Make a microservices architecture diagram"
+
+---
+
+## 📊 API Reference
+
+### **POST /api/chat**
+
+Sends message to diagram agent.
+
+**Request Body**:
+
+```json
+{
+  "messages": [
+    {
+      "id": "uuid",
+      "role": "user",
+      "content": "Draw a flowchart",
+      "parts": [
+        {
+          "type": "text",
+          "text": "Draw a flowchart"
+        }
+      ]
+    }
+  ],
+  "xml": "<mxGraphModel>...</mxGraphModel>"
+}
+```
+
+**Response**:
+
+```json
+{
+  "id": "uuid",
+  "role": "assistant",
+  "content": "",
+  "toolCalls": [
+    {
+      "id": "call-id",
+      "type": "tool-call",
+      "toolName": "display_diagram",
+      "args": {
+        "xml": "<mxGraphModel>...complete diagram...</mxGraphModel>"
+      }
+    }
+  ]
+}
+```
+
+---
+
+## 🛠️ Technology Stack
+
+### **Frontend**
+
+- **Next.js 15** - React framework with App Router
+- **TailwindCSS 4** - Utility-first styling
+- **TypeScript** - Type-safe development
+- **Shadcn/ui** - Component library
+- **Lucide React** - Icon library
+
+### **Backend**
+
+- **Mastra Framework** - Multi-agent orchestration
+- **Ollama** - Local LLM inference
+- **Bun** - Fast JavaScript runtime
+- **Zod** - Schema validation
+
+### **Infrastructure**
+
+- **Docker** - Containerization
+- **Nosana Network** - Decentralized GPU compute
+- **Next.js API Routes** - Serverless endpoints
+
+---
+
+### **API Testing**
+
 ```bash
-npm install -g @nosana/cli
-nosana job post --file ./nos_job_def/nosana_mastra.json --market nvidia-3090 --timeout 30
+# Test the chat endpoint
+curl -X POST http://localhost:3000/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [{
+      "id": "1",
+      "role": "user",
+      "content": "Draw a cat",
+      "parts": [{"type": "text", "text": "Draw a cat"}]
+    }],
+    "xml": "<mxGraphModel dx=\"1\" dy=\"1\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"><root><mxCell id=\"0\"/><mxCell id=\"1\" parent=\"0\"/></root></mxGraphModel>"
+  }'
 ```
 
-## 🏆 Judging Criteria
+---
 
-Submissions evaluated on 4 key areas (25% each):
+## 🐛 Troubleshooting
 
-### 1. Innovation 🎨
-- Originality of agent concept
-- Creative use of AI capabilities
-- Unique problem-solving approach
+### **AI not responding**
 
-### 2. Technical Implementation 💻
-- Code quality and organization
-- Proper use of Mastra framework
-- Efficient tool implementation
-- Error handling and robustness
+```bash
+# Check if Ollama endpoint is accessible
+curl http://localhost:11434/api/tags
 
-### 3. Nosana Integration ⚡
-- Successful deployment on Nosana
-- Resource efficiency
-- Stability and performance
-- Proper containerization
+# Verify environment variables
+echo $OLLAMA_API_URL
+echo $MODEL_NAME_AT_ENDPOINT
 
-### 4. Real-World Impact 🌍
-- Practical use cases
-- Potential for adoption
-- Clear value proposition
-- Demonstration quality
+# Check server logs
+docker logs nosdraw
+```
 
-## 🎁 Prizes
+### **Diagram not rendering**
 
-**Top 10 submissions will be rewarded:**
-- 🥇 1st Place: $1,000 USDC
-- 🥈 2nd Place: $750 USDC
-- 🥉 3rd Place: $450 USDC
-- 🏅 4th Place: $200 USDC
-- 🏅 5th-10th Place: $100 USDC each
+- Verify XML is valid (check browser console)
+- Ensure canvas context is properly initialized
+- Clear cache and refresh page
 
-## 📚 Learning Resources
+### **Docker build fails**
 
-For more information, check out the following resources:
+```bash
+# Build with progress output
+docker build --progress=plain -t your-image:latest .
 
-- [Nosana Documentation](https://docs.nosana.io)
-- [Mastra Documentation](https://mastra.ai/en/docs) - Learn more about Mastra and its features
-- [CopilotKit Documentation](https://docs.copilotkit.ai) - Explore CopilotKit's capabilities
-- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API
-- [Docker Documentation](https://docs.docker.com)
-- [Nosana CLI](https://github.com/nosana-ci/nosana-cli)
-- [Mastra Agents Overview](https://mastra.ai/en/docs/agents/overview)
-- [Build an AI Stock Agent Guide](https://mastra.ai/en/guides/guide/stock-agent)
-- [Mastra Tool Calling Documentation](https://mastra.ai/en/docs/agents/tools)
+# Check Dockerfile syntax
+docker build -f Dockerfile --dry-run .
+```
 
-## 🆘 Support & Community
+### **Port conflicts**
 
-### Get Help
-- **Discord**: Join [Nosana Discord](https://nosana.com/discord) 
-- **Dedicated Channel**: [Builders Challenge Dev Chat](https://discord.com/channels/236263424676331521/1354391113028337664)
-- **Twitter**: Follow [@nosana_ai](https://x.com/nosana_ai) for live updates
+```bash
+# Use alternative port
+docker run -p 8080:3000 your-image:latest
 
-## 🎉 Ready to Build?
+# Check what's using port 3000
+lsof -i :3000
+```
 
-1. **Fork** this repository
-2. **Build** your AI agent
-3. **Deploy** to Nosana
-4. **Present** your creation
+---
 
-Good luck, builders! We can't wait to see the innovative AI agents you create for the Nosana ecosystem.
+## 📚 Additional Resources
 
-**Happy Building!** 🚀
+- **Draw.io XML Reference**: https://desk.draw.io/support/solutions/articles/16000042563
+- **Mastra Documentation**: https://mastra.ai
+- **Next.js Docs**: https://nextjs.org/docs
+- **Ollama Repository**: https://github.com/ollama/ollama
 
-## Stay in the Loop
+---
 
-Want access to exclusive builder perks, early challenges, and Nosana credits?
-Subscribe to our newsletter and never miss an update.
+---
 
-👉 [ Join the Nosana Builders Newsletter ](https://e86f0b9c.sibforms.com/serve/MUIFALaEjtsXB60SDmm1_DHdt9TOSRCFHOZUSvwK0ANbZDeJH-sBZry2_0YTNi1OjPt_ZNiwr4gGC1DPTji2zdKGJos1QEyVGBzTq_oLalKkeHx3tq2tQtzghyIhYoF4_sFmej1YL1WtnFQyH0y1epowKmDFpDz_EdGKH2cYKTleuTu97viowkIIMqoDgMqTD0uBaZNGwjjsM07T)
+## 🙏 Acknowledgments
 
-Be the first to know about:
-- 🧠 Upcoming Builders Challenges
-- 💸 New reward opportunities
-- ⚙ Product updates and feature drops
-- 🎁 Early-bird credits and partner perks
+- **Nosana** - Decentralized GPU compute
+- **Mastra** - AI agent framework
+- **Ollama** - Local LLM inference
+- **Next.js** - React framework
+- **Community** - Feedback and support
 
-Join the Nosana builder community today — and build the future of decentralized AI.
-
-
+---

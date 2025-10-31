@@ -1,10 +1,10 @@
 {
-  "name": "starter",
+  "name": "nosDraw",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:agent": "mastra dev",
-    "dev:ui": "next dev --turbopack",
+    "dev:agent": "mastra dev ",
+    "dev:ui": "next dev --turbopack ",
     "dev:debug": "LOG_LEVEL=debug npm run dev",
     "build:ui": "next build",
     "start:ui": "next start",
@@ -12,11 +12,14 @@
     "start:agent": "mastra start",
     "lint": "next lint",
     "build": "mastra build && next build",
-    "start": "concurrently \"npm:start:agent\" \"npm:start:ui\""
+    "start": "concurrently \"bun run start:agent\" \"bun run start:ui\""
   },
   "dependencies": {
     "@ag-ui/mastra": "0.1.0",
+    "@ai-sdk/amazon-bedrock": "^2.0.0",
+    "@ai-sdk/google": "^2.0.0",
     "@ai-sdk/openai": "^2.0.42",
+    "@ai-sdk/react": "^2.0.22",
     "@copilotkit/react-core": "1.10.6",
     "@copilotkit/react-textarea": "1.10.6",
     "@copilotkit/react-ui": "1.10.6",
@@ -27,13 +30,33 @@
     "@mastra/libsql": "0.15.0",
     "@mastra/mcp": "^0.13.4",
     "@mastra/memory": "0.15.4",
+    "@openrouter/ai-sdk-provider": "^0.4.6",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "@vercel/analytics": "^1.5.0",
+    "@xmldom/xmldom": "^0.9.8",
+    "ai": "^5.0.22",
+    "base-64": "^1.0.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "dotenv": "^17.2.3",
+    "install": "^0.13.0",
+    "jsdom": "^26.0.0",
     "libsql": "^0.5.22",
+    "lucide-react": "^0.483.0",
     "mastra": "0.13.4",
     "next": ">=15.5.4",
-    "ollama-ai-provider-v2": "^1.5.0",
+    "ollama-ai-provider-v2": "^1.5.2",
+    "pako": "^2.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-drawio": "^1.0.3",
+    "react-icons": "^5.5.0",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^3.25.0"
   },
   "devDependencies": {
@@ -46,6 +69,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@types/pako": "^2.0.3"
   }
 }
