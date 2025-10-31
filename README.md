@@ -11,8 +11,10 @@
 **Project Name**: nosDraw - AI Diagram Generator  
 **Repository**: [https://github.com/Andy00L/agent-challenge](https://github.com/Andy00L/agent-challenge)  
 **Docker Image**: `drewdockerus/agent-challenge:latest`  
-**Video Demo**: [Link to your demo video]  
-**Twitter**: [Your Twitter/X link]  
+**Video Demo**: https://youtu.be/z4crjc7I4O4  
+**Twitter**: https://x.com/Andy00L/status/1984189860685783103
+**Deployer address**: 2WFKwAqjGohFyn6K7e7w7FtEy5GePXMVaQ629if8FaBy  
+**Host address**: CoDCSGhEViBhw3vSKhha2VbrtwAJ17MjpieiZLh76Vad  
 **Solana Address**: ALCu5d52bEaUUKAoXw7Va5RFbvL6hGri81bmdAirb55z  
 **Nosana Deployment Proof**: https://352pafnckysnsauax8amasj8koszy923nd866fn5y2gu.node.k8s.prd.nos.ci/
 
@@ -122,7 +124,7 @@ Tool Invocation (display_diagram)
 Rendered Output
 ```
 
-**Key Instructions**:
+**Key Instructions to the ai**:
 
 - NEVER explain, ALWAYS create immediately
 - Use display_diagram tool for every request
@@ -382,6 +384,11 @@ Multi-stage build optimized for production:
 3. **Press Cmd/Ctrl + Enter** to send
 4. **Watch the AI generate** your diagram in real-time
 5. **Export or modify** as needed
+
+### **Issue liste**
+
+1. if the ai return a bad answer please refresh your page.
+2. there a focus issue with the chat box so after your first prompt please copy-paste the other ones.
 
 ### **Example Prompts**
 
